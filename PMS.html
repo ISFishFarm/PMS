@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>PMS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            margin-top: 5px;
+            background-color: aliceblue;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            text-align: left;
+
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label {
+            font-size: 20px;
+            color: black;
+            margin-bottom: 5px;
+            font-weight: bold;
+            padding-left: 5px;
+        }
+
+        .value {
+            font-size: 24px;
+            color: rgb(92, 89, 89);
+            display: flex;
+            align-items: baseline;
+            padding-left: 15px;
+        }
+
+        .top {
+            font-size: 35px;
+        }
+
+        .chart {
+            background-color: white;
+            margin: 10px;
+            display: list-item;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <i class="fa-solid fa-leaf fa-4x"></i>
+    <h1 class="top">PLANT MONITERING SYSTEM</h1>
+    <dive class="grid">
+        <div class="card">
+            <i class="fa-solid fa-temperature-empty fa-3x"></i>
+            <div class="content">
+                <div class="label">TEMPERATURE</div>
+                <div class="value" id="TEMPERATURE">25<span class="unit">'C</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-droplet fa-3x"></i>
+            <div class="content">
+                <div class="label">HUMIDITY</div>
+                <div class="value" id="HUMIDITY">25<span class="unit">%</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-battery-full fa-3x"></i>
+            <div class="content">
+                <div class="label">BATTERY VOLTAGE</div>
+                <div class="value" id="BATTERY">12<span class="unit">V</span>
+                </div>
+            </div>
+        </div>
+    </dive>
+
+
+    <div class="chart">
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+        <script>
+            const xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,];
+            const yValues = [25, 25, 26, 28, 29, 30, 30, 31, 32, 33, 34, 30];
+
+
+            new Chart("myChart", {
+                type: "line",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        fill: false,
+                        lineTension: 0,
+                        backgroundColor: "rgba(0,0,255,1.0)",
+                        borderColor: "rgba(0,0,255,0.1)",
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    scales: {
+                        yAxes: [{ ticks: { min: 20, max: 40 } }],
+                    }
+                }
+            });
+        </script>
+    </div>
+</body>
+
+</html>
